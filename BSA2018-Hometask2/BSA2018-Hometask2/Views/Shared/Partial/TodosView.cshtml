@@ -1,0 +1,19 @@
+﻿@model  List<Todo>
+
+<link rel="stylesheet" href="~/css/todo.css" />
+
+
+<ul id="myUL">
+    @foreach (var todo in Model)
+    {
+        @if (todo.IsComplete)
+        {
+        <li id="ctodo">@Html.ActionLink(todo.Name, "TodoView", "Todo", new { id = todo.Id })</li>
+        }
+        else
+        {
+        <li id="todo">@Html.ActionLink(todo.Name, "TodoView", "Todo", new { id = todo.Id })</li>
+        }
+     }
+
+</ul>

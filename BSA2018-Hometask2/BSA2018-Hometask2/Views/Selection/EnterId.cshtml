@@ -1,0 +1,11 @@
+﻿@model string
+
+@using (Html.BeginForm((string)@ViewBag.Name, "Selection", FormMethod.Post))
+{
+  <label for="id">Enter Id:</label>
+    <input type="number" class="form-control col-sm-1" id="id" name="id">
+
+    <p><input type="submit" value="Send" /></p>
+}
+
+

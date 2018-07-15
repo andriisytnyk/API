@@ -1,0 +1,25 @@
+﻿@model List<(Post, int)>
+
+<table border="0" class="table">
+    <thead>
+        <tr>
+            <th>Post</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+         <tr>
+             <td>
+                 @item.Item1.Title
+             </td>
+            <td>@item.Item2</td>
+        </tr>
+
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,70 @@
+﻿#myUL {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items */
+#todo {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#ctodo {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+
+
+/* Darker background-color on hover */
+#todo:hover {
+    background: #ddd;
+}
+
+
+/* Darker background-color on hover */
+#ctodo:hover {
+    background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+#ctodo {
+    background: #888;
+    color: #fff;
+}
+
+    /* Add a "checked" mark when clicked on */
+#ctodo::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+
+}

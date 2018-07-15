@@ -1,0 +1,21 @@
+﻿@model (Post post, Comment longestComment, Comment likedComment, int commentsCount)
+
+<table border="0" class="table">
+    <thead>
+        <tr>
+            <th>Post</th>
+            <th>Longest comment</th>
+            <th>Liked comment</th>
+            <th>Comments count</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a data-toggle="collapse" href="#user">@Model.post.Title</a> </td>
+            <td><a data-toggle="collapse" href="#lastpost">@Model.longestComment.Body</a> </td>
+            <td>@Model.likedComment.Body</td>
+            <td>@Model.commentsCount</td>
+        </tr>
+    </tbody>
+</table>

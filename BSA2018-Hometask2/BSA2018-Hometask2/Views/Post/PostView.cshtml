@@ -1,0 +1,49 @@
+﻿@model Post
+
+@{
+    ViewData["Href"] = "#collapse" + Model.Id;
+    ViewData["ID"] = "collapse" + Model.Id;
+}
+
+
+<div class="container">
+    <div class="well">
+        <div class="media">
+
+            <div class="media-body">
+                <table border="0" class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Body</th>
+                            <th>Created</th>
+                            <th>Likes</th>
+                            <th>Comments</th>
+                            <th>By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Title</td>
+                            <td>@Model.Body</td>
+                            <td>@Model.CreatedAt</td>
+                            <td>@Model.Likes</td>
+                            <td><a data-toggle="collapse" href=@ViewData["Href"]><i class="glyphicon glyphicon-comment"></i></a> @Model.Comments.Count</td>
+                            <td>@Html.ActionLink((string)ViewBag.Owner.Name, "Index", "User", new { id = (int)ViewBag.Owner.Id })</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id=@ViewData["ID"] class="panel-collapse collapse">
+                    <hr class="divider" />
+                    <p class="text-center">Comments</p>
+                    <ul class="list-group">
+                        @foreach (var item in Model.Comments)
+                        {
+                            await Html.RenderPartialAsync("Partial/CommentView", item);
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model (User user, Post lastPost, int comments, int todos, Post popularCommented, Post likedPost)
+
+<table border="0" class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Last post</th>
+            <th>Comments to last post</th>
+            <th>Todos</th>
+            <th>Popular commented</th>
+            <th>The most liked post</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a data-toggle="collapse" href="#user">@Model.user.Name</a> </td>
+            <td><a data-toggle="collapse" href="#lastpost">@Model.lastPost.Title</a> </td>
+            <td>@Model.comments</td>
+            <td>@Model.todos</td>
+            <td><a data-toggle="collapse" href="#commented">@Model.popularCommented.Title</a> </td>
+            <td><a data-toggle="collapse" href="#liked">@Model.likedPost.Title</a> </td>
+        </tr>
+    </tbody>
+</table>
+
+
+    <table border="0" id="user" class="panel-collapse collapse table">
+        <thead>
+            <tr>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created</th>
+                <th>Popular commented</th>
+                <th>The most liked post</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src=@Model.user.Avatar> </td>
+                <td>@Html.ActionLink(Model.user.Name, "Index", "User", new { id = Model.user.Id }) </td>
+                <td>@Model.user.Email</td>
+                <td>@Model.user.CreatedAt</td>
+                @if (@Model.user.Posts.Count > 0)
+                {
+                    <td class="col-sm-9">@Html.ActionLink(@Model.user.Posts.Count.ToString(), "Index", "Post", new { id = @Model.user.Id })</td>
+                }
+                else
+                {
+                    <td class="col-sm-9">@Model.user.Posts.Count.ToString()</td>}
+                @if (@Model.user.Todos.Count > 0)
+                {
+                    <td class="col-sm-9">@Html.ActionLink(@Model.user.Todos.Count.ToString(), "Index", "Post", new { id = @Model.user.Id })</td>
+                }
+                else
+                {
+                    <td class="col-sm-9">@Model.user.Todos.Count.ToString()</td>}
+            </tr>
+        </tbody>
+    </table>
+

@@ -1,0 +1,22 @@
+﻿@model List<(int,string)>
+
+<table border="0" class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>@item.Item1 </td>
+                <td>@Html.ActionLink(@item.Item2,"TodoView","Todo",new { id = @item.Item1 })</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

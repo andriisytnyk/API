@@ -1,0 +1,51 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <span>
+                    <a class="pull-left">
+                        <img class="img-circle" src=@item.Avatar>
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            @Html.ActionLink(item.Name,"Index","User",new { id = item.Id })
+                        </h4>
+                    </div>
+                </span>
+                <span>
+                    <h3>
+                        <p class="text-center">Posts</p>
+                    </h3>
+
+                    @foreach (var post in item.Posts)
+                    {
+                        await Html.RenderPartialAsync("Partial/PostView", post);
+                    }
+
+                </span>
+                <span>
+                    <h3>
+                        <p class="text-center">Todos</p>
+                    </h3>
+
+                    @{
+                        await Html.RenderPartialAsync("Partial/TodosView",item.Todos);
+                    }
+                    <br />
+                </span>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
